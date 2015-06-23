@@ -45,7 +45,7 @@
 		<script>
 			var app = angular.module('myApp', []);
 			app.controller('customersCtrl', function($scope, $http) {
-				$http.get("json/data.json")
+				$http.get("json/user.json")
 				.success(function(response) {$scope.names = response.user;});
 			});
 		</script>
