@@ -2,33 +2,53 @@
 <html>
 	<head>
 		<title>Angulagar JS Hello World</title>
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/angular.css">
+		<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+		<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
 	</head>
-	<body ng-app="">
-		
-		
-		<div ng-controller="ExampleCtrl">
-		Filter: <input type="text" name="" value="" placeholder="" ng-model="search">
-			<ol>
+	<body ng-app="myApp">
+	<div class="container" id="main_container"  ng-controller="customersCtrl">
+
+
+
+		<!-- Filter: <input type="text" name="" value="" placeholder="" ng-model="search"> -->
+			<!-- <ol>
 				<li ng-repeat="friend in friends | filter:search | orderBy: 'age' ">{{friend.name }} {{ friend.age }} {{friend.gender }}</li>
-			</ol>
+			</ol> -->
+
+<ul class="items">
+	<li ng-repeat="food in names">
+		<div class="food_item" id="food_item_{{ food.id }}">
+			<div class="image" id='{{ food.id }}'>
+			<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
+				<img src='{{ food.food_image  }}' alt='{{ food.name }} ' /> 
+			</div> 
+			<div class="author clearfix"> 
+				<img src='{{ food.user_image  }}'  alt="profile" class="profile" />
+			<h1 class="title"> {{ food.name }} <cite> {{ food.place }} </cite></h1>
+			</div>
+			<div class="description"><p>{{ food.description  }}</p></div>
 		</div>
+	</li>
+</ul>
+
+	</div>
+	<!-- //.#main_container-->	
 		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		
 		<script>
-				function ExampleCtrl($scope) {
-					$scope.friends  = [
-						{name:'John', age:25, gender:'boy'},
-						{name:'Jessie', age:30, gender:'girl'},
-						{name:'Johanna', age:28, gender:'girl'},
-						{name:'Joy', age:15, gender:'girl'},
-						{name:'Mary', age:28, gender:'girl'},
-						{name:'Peter', age:95, gender:'boy'},
-						{name:'Sebastian', age:50, gender:'boy'},
-						{name:'Erika', age:27, gender:'girl'},
-						{name:'Patrick', age:40, gender:'boy'},
-						{name:'Samantha', age:60, gender:'girl'}
-					]
-					
-				}
+			var app = angular.module('myApp', []);
+			app.controller('customersCtrl', function($scope, $http) {
+				$http.get("json/data.json")
+				.success(function(response) {$scope.names = response.user;});
+			});
 		</script>
 	</body>
 </html>
+
