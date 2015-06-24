@@ -58,7 +58,7 @@
 				$('.product_info > .food_item').remove();
 				$("#food_item_" + selectedFood.id).clone().appendTo('.product_info');
 				var positionLft = $('.product_info').width();
-
+				$('body').css('overflow', 'hidden');
 				// // console.log('after form append');
 				// $('ul.items').css('left', - (positionLft + 20));
 				// // alert('width' + positionLft);
@@ -66,6 +66,7 @@
 
 				$scope.close = function () {
 					$scope.showInfo = false;
+					$('body').removeAttr('style');
 					$('ul.items').removeAttr('style');
 					// alert('width' + positionLft);
 					$('.product_info').removeAttr('style');
