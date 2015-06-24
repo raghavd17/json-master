@@ -17,7 +17,7 @@
 				<li ng-repeat="friend in friends | filter:search | orderBy: 'age' ">{{friend.name }} {{ friend.age }} {{friend.gender }}</li>
 			</ol> -->
 			<ul class="items">
-				<li ng-repeat="food in names | filter:search | orderBy: 'city'">
+				<li ng-repeat="food in names | filter:search | orderBy: 'name'">
 					<div class="food_item" id="food_item_{{ food.id }}" ng-model="selectedFood">
 						<div class="image" id='{{ food.id }}' ng-click="toggleInfo(food)">
 							<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
