@@ -17,14 +17,14 @@
 				<li ng-repeat="friend in friends | filter:search | orderBy: 'age' ">{{friend.name }} {{ friend.age }} {{friend.gender }}</li>
 			</ol> -->
 			<ul class="items">
-				<li ng-repeat="food in names | filter:search | orderBy: 'place'">
-					<div class="food_item" id="food_item_{{ food.id }}" ng-model="selectedFood">
+				<li ng-repeat="food in names | filter:search | orderBy: 'place'" ng-click="toggleInfo(food)">
+					<div class="food_item" id="food_item_{{ food.id }}">
 						<div class="image" id='{{ food.id }}' >
 							<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
-							<img src='{{ food.food_image  }}' alt='{{ food.name }}' ng-click="toggleInfo(food)" />
+							<img src='{{ food.food_image  }}' alt='{{ food.name }}' />
 						</div>
 						<div class="author clearfix">
-							<img src='{{ food.user_image  }}'  alt="profile" class="profile" ng-click="toggleInfo(food)" />
+							<img src='{{ food.user_image  }}'  alt="profile" class="profile" />
 							<h1 class="title"> {{ food.name | uppercase }} <cite> {{ food.place  }} </cite></h1>
 						</div>
 						<div class="description"><p>{{ food.description  }}</p></div>
@@ -33,8 +33,19 @@
 			</ul>
 
 
-			<div class="product_info" ng-show="showInfo">
+			<div class="product_info" ng-show="showInfo" ng-class="{'open':showInfo, 'close' : !showInfo}">
 				<div class="arrow_close" ng-click="close()"><img src="img/arrow_close.png" alt="Close"></div>
+				<div class="food_item">
+					<div class="image" id='{{ scecificFood.id }}' >
+						<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
+						<img src='{{ scecificFood.food_image  }}' alt='{{ scecificFood.name }}' />
+					</div>
+					<div class="author clearfix">
+						<img src='{{ scecificFood.user_image  }}'  alt="profile" class="profile" />
+						<h1 class="title"> {{ scecificFood.name | uppercase }} <cite> {{ scecificFood.place  }} </cite></h1>
+					</div>
+					<div class="description"><p>{{ scecificFood.description  }}</p></div>
+				</div>
 				
 			</div>
 			<!-- //.product_info -->
@@ -51,28 +62,24 @@
 			.success(function(response) {$scope.names = response.user;});
 
 			$scope.toggleInfo = function(selectedFood){
+				//console.log('food object: ', selectedFood);
 				// alert('hellooo');
-				$scope.showInfo = true;
-				// scope().node
-				
-				$('.product_info > .food_item').remove();
-				$("#food_item_" + selectedFood.id).clone().appendTo('.product_info');
 				var positionLft = $('.product_info').width();
-				$('body').css('overflow', 'hidden');
-				// // console.log('after form append');
-				// $('ul.items').css('left', - (positionLft + 20));
-				// // alert('width' + positionLft);
-				$('.product_info').css('right','0');
+				$scope.showInfo = true;
+				// console.log($scope.showInfo, 'test');
+				
+				$scope.scecificFood = selectedFood;
+			};
 
-				$scope.close = function () {
-					$scope.showInfo = false;
-					$('body').removeAttr('style');
-					$('ul.items').removeAttr('style');
-					// alert('width' + positionLft);
-					$('.product_info').removeAttr('style');
-				}
+			$scope.close = function () {
+				$('.product_info').removeAttr('style');
+				$scope.showInfo = false;
+				// $('body').removeAttr('style');
+				// $('ul.items').removeAttr('style');
+				// alert('width' + positionLft);
+				
+			};
 
-			}
 			// toggleInfo end //
 
 		});
