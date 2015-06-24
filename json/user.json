@@ -1,5 +1,5 @@
 {"user" :[
-{
+    {
     "id": 1,
     "name": "Veg Platter",
     "place": "Bangalore",
@@ -10,7 +10,7 @@
     {
     "id": 2,
     "name": "Spaghetti Aglio E Olio",
-    "place": "Bangalore",
+    "place": "Mangalore",
     "user_image": "img/user2.jpg",
     "food_image":"img/food2.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
@@ -26,7 +26,7 @@
     {
     "id": 4,
     "name": "Macaroni Salad",
-    "place": "Bangalore",
+    "place": "Mumbai",
     "user_image": "img/user4.jpg",
     "food_image":"img/food4.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
@@ -42,7 +42,7 @@
     {
     "id": 6,
     "name": "Vegetable Delite",
-    "place": "Bangalore",
+    "place": "Mangalore",
     "user_image": "img/user6.jpg",
     "food_image":"img/food6.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
@@ -50,7 +50,7 @@
     {
     "id": 7,
     "name": "Chicken Lasagne",
-    "place": "Bangalore",
+    "place": "Mumbai",
     "user_image": "img/user7.jpg",
     "food_image":"img/food7.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
@@ -66,7 +66,7 @@
     {
     "id": 9,
     "name": "Vegetable test1",
-    "place": "Bangalore",
+    "place": "Mangalore",
     "user_image": "img/user9.jpg",
     "food_image":"img/food9.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
@@ -74,7 +74,7 @@
     {
     "id": 10,
     "name": "Vegetable test2",
-    "place": "Bangalore",
+    "place": "Mumbai",
     "user_image": "img/user4.jpg",
     "food_image":"img/food10.jpg",
     "description":"Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat."
