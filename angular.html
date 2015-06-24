@@ -11,44 +11,72 @@
 		<![endif]-->
 	</head>
 	<body ng-app="myApp">
-	<div class="container" id="main_container"  ng-controller="customersCtrl">
-
-
-
-		<!-- Filter: <input type="text" name="" value="" placeholder="" ng-model="search"> -->
+		<div class="container" id="main_container"  ng-controller="customersCtrl">
+			Filter: <input type="text" name="" value="" placeholder="" ng-model="search">
 			<!-- <ol>
 				<li ng-repeat="friend in friends | filter:search | orderBy: 'age' ">{{friend.name }} {{ friend.age }} {{friend.gender }}</li>
 			</ol> -->
+			<ul class="items">
+				<li ng-repeat="food in names | filter:search | orderBy: 'city'">
+					<div class="food_item" id="food_item_{{ food.id }}" ng-model="selectedFood">
+						<div class="image" id='{{ food.id }}' ng-click="toggleInfo(food)">
+							<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
+							<img src='{{ food.food_image  }}' alt='{{ food.name }} '  />
+						</div>
+						<div class="author clearfix">
+							<img src='{{ food.user_image  }}'  alt="profile" class="profile" />
+							<h1 class="title"> {{ food.name }} <cite> {{ food.place }} </cite></h1>
+						</div>
+						<div class="description"><p>{{ food.description  }}</p></div>
+					</div>
+				</li>
+			</ul>
 
-<ul class="items">
-	<li ng-repeat="food in names">
-		<div class="food_item" id="food_item_{{ food.id }}">
-			<div class="image" id='{{ food.id }}'>
-			<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
-				<img src='{{ food.food_image  }}' alt='{{ food.name }} ' /> 
-			</div> 
-			<div class="author clearfix"> 
-				<img src='{{ food.user_image  }}'  alt="profile" class="profile" />
-			<h1 class="title"> {{ food.name }} <cite> {{ food.place }} </cite></h1>
+
+			<div class="product_info" ng-show="showInfo">
+				<div class="arrow_close" ng-click="close()"><img src="img/arrow_close.png" alt="Close"></div>
+
 			</div>
-			<div class="description"><p>{{ food.description  }}</p></div>
+			<!-- //.product_info -->
 		</div>
-	</li>
-</ul>
-
-	</div>
-	<!-- //.#main_container-->	
-		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
+		<!-- //.#main_container-->
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-		
 		<script>
-			var app = angular.module('myApp', []);
-			app.controller('customersCtrl', function($scope, $http) {
-				$http.get("json/user.json")
-				.success(function(response) {$scope.names = response.user;});
-			});
+
+		var app = angular.module('myApp', []);
+		app.controller('customersCtrl', function($scope, $http) {
+			$http.get("json/user.json")
+			.success(function(response) {$scope.names = response.user;});
+
+			$scope.toggleInfo = function(selectedFood){
+				// alert('hellooo');
+				$scope.showInfo = true;
+
+				// scope().node
+				
+				$('.product_info > .food_item').empty();
+				$("#food_item_" + selectedFood.id).clone().appendTo(' .product_info');
+				var positionLft = $('.product_info').width();
+
+				// // console.log('after form append');
+				$('ul.items').css('left', - (positionLft + 20));
+				// // alert('width' + positionLft);
+				$('.product_info').css('right','0');
+
+				$scope.close = function () {
+					$scope.showInfo = false;
+					$('ul.items').removeAttr('style');
+					// alert('width' + positionLft);
+					$('.product_info').removeAttr('style');
+				}
+
+			}
+			// toggleInfo end //
+
+		});
+
 		</script>
 	</body>
 </html>
-
