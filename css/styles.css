@@ -61,6 +61,6 @@ ul.items li > div.food_item > .description{ display: none;}
 .product_info.close {
 	right: -390px;
 }
-.product_info .arrow_close { cursor: pointer; position: absolute; top: 40%; left: -18px; height: 58px; z-index: 15; width:18px; }
+.product_info .arrow_close { cursor: pointer; position: absolute; top: 49.5%; left: -18px; height: 58px; z-index: 15; width:18px; }
 footer > .container { color: rgb(198, 198, 198); background: rgba(0,0,0,0.9); padding: 10px; clear: both; overflow: hidden;}
 footer p { margin: 0px;}

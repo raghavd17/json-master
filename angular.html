@@ -11,7 +11,7 @@
 		<![endif]-->
 	</head>
 	<body ng-app="myApp">
-		<div class="container" id="main_container"  ng-controller="customersCtrl">
+		<div class="container" id="main_container"  ng-controller="foodItemCtrl">
 			Filter: <input type="text" name="" value="" placeholder="" ng-model="search">
 			<!-- <ol>
 				<li ng-repeat="friend in friends | filter:search | orderBy: 'age' ">{{friend.name }} {{ friend.age }} {{friend.gender }}</li>
@@ -21,10 +21,10 @@
 					<div class="food_item" id="food_item_{{ food.id }}">
 						<div class="image" id='{{ food.id }}' >
 							<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
-							<img src='{{ food.food_image  }}' alt='{{ food.name }}' />
+							<img ng-src='{{ food.food_image  }}' alt='{{ food.name }}' />
 						</div>
 						<div class="author clearfix">
-							<img src='{{ food.user_image  }}'  alt="profile" class="profile" />
+							<img ng-src='{{ food.user_image  }}'  alt="profile" class="profile" />
 							<h1 class="title"> {{ food.name | uppercase }} <cite> {{ food.place  }} </cite></h1>
 						</div>
 						<div class="description"><p>{{ food.description  }}</p></div>
@@ -34,17 +34,17 @@
 
 
 			<div class="product_info" ng-show="showInfo" ng-class="{'open':showInfo, 'close' : !showInfo}">
-				<div class="arrow_close" ng-click="close()"><img src="img/arrow_close.png" alt="Close"></div>
+				<div class="arrow_close" ng-click="close()"><img ng-src="img/arrow_close.png" alt="Close"></div>
 				<div class="food_item">
-					<div class="image" id='{{ scecificFood.id }}' >
+					<div class="image" id='{{ selectedFood.id }}' >
 						<ul class="user_review"><li> 101 Likes</li> <li> 50 Discuss</li></ul>
-						<img src='{{ scecificFood.food_image  }}' alt='{{ scecificFood.name }}' />
+						<img ng-src='{{ selectedFood.food_image  }}' alt='{{ selectedFood.name }}' />
 					</div>
 					<div class="author clearfix">
-						<img src='{{ scecificFood.user_image  }}'  alt="profile" class="profile" />
-						<h1 class="title"> {{ scecificFood.name | uppercase }} <cite> {{ scecificFood.place  }} </cite></h1>
+						<img ng-src='{{ selectedFood.user_image  }}'  alt="profile" class="profile" />
+						<h1 class="title"> {{ selectedFood.name | uppercase }} <cite> {{ selectedFood.place  }} </cite></h1>
 					</div>
-					<div class="description"><p>{{ scecificFood.description  }}</p></div>
+					<div class="description"><p>{{ selectedFood.description  }}</p></div>
 				</div>
 				
 			</div>
@@ -57,7 +57,7 @@
 		<script>
 
 		var app = angular.module('myApp', []);
-		app.controller('customersCtrl', function($scope, $http) {
+		app.controller('foodItemCtrl', function($scope, $http) {
 			$http.get("json/user.json")
 			.success(function(response) {$scope.names = response.user;});
 
@@ -68,9 +68,9 @@
 				$scope.showInfo = true;
 				// console.log($scope.showInfo, 'test');
 				
-				$scope.scecificFood = selectedFood;
+				$scope.selectedFood = selectedFood;
 			};
-
+			// toggleInfo end //
 			$scope.close = function () {
 				$('.product_info').removeAttr('style');
 				$scope.showInfo = false;
@@ -80,7 +80,7 @@
 				
 			};
 
-			// toggleInfo end //
+			
 
 		});
 
