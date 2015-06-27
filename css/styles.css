@@ -1,7 +1,19 @@
+html {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  -webkit-box-sizing: inherit;
+  -moz-box-sizing: inherit;
+  box-sizing: inherit;
+  }
+
 body
 {
 	background: #eee;
 }
+
 
 #main_container, #main_container1
 {
@@ -22,8 +34,8 @@ ul.items { margin: 0px; padding: 0px; list-style: none; position: relative;
     transition-duration: 0.2s;
 }
 
-ul.items > li  { overflow: hidden; display: inline-block; width: 24.7%;  vertical-align: top; margin-bottom: 10px; background: #fff;  }
-ul.items li > div.food_item {  border: 1px solid #f1f1f1; padding: 10px;}
+ul.items > li  { overflow: hidden; display: inline-block; width: 100%; /*width: 24.7%; */ vertical-align: top;}
+ul.items li > div.food_item {  border: 1px solid #f1f1f1; padding: 10px;  margin: 10px;  background: #fff;}
 ul.items li > div.food_item div.image { position: relative;}
 ul.items li > div.food_item div.image img, .product_info div.image img { width: 100%; max-width: 100%;}
 ul.items li > div.food_item div.image ul.user_review, div.food_item div.image ul.user_review  { display: none; list-style: none; margin: 0px; padding: 0; -webkit-transition: display 2s;  -moz-transition: display 2s; transition: width 2s; z-index: 10; position: absolute; right: 10px; top:10px;}
@@ -64,3 +76,11 @@ ul.items li > div.food_item > .description{ display: none;}
 .product_info .arrow_close { cursor: pointer; position: absolute; top: 49.5%; left: -18px; height: 58px; z-index: 15; width:18px; }
 footer > .container { color: rgb(198, 198, 198); background: rgba(0,0,0,0.9); padding: 10px; clear: both; overflow: hidden;}
 footer p { margin: 0px;}
+
+@media only screen and (min-width : 768px) {
+	ul.items > li  { width: 50%; }
+}
+
+@media only screen and (min-width : 989px)  {
+	ul.items > li  { width: 33.2% }
+}
